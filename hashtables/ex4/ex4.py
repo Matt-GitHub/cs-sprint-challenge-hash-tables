@@ -1,10 +1,12 @@
 def has_negatives(a):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
-
-    return result
+    result = {}
+    answer = []
+    for num in a:
+        if num * -1 not in result:
+            result[num] = num
+        else:
+            answer.append(abs(num))
+    return answer
 
 
 if __name__ == "__main__":
