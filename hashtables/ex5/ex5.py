@@ -1,14 +1,27 @@
 # Your code here
 
 
-
 def finder(files, queries):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    cache = {}
+    for file in files:
+        # print(file.split('/'))
+        split = file.split('/')
+        for x in split:
+            if x in cache:
+                cache[x] = [cache[x], file]
+            else:
+                cache[x] = file
+    solution = []
+    for value in queries:
+        if value in cache:
+            solution.append(cache[value])
+    answer = []
 
-    return result
+    def final(arr):
+        for i in arr:
+            final(i) if isinstance(i, list) else answer.append(i)
+    final(solution)
+    return answer
 
 
 if __name__ == "__main__":
@@ -20,6 +33,7 @@ if __name__ == "__main__":
     queries = [
         "foo",
         "qux",
-        "baz"
+        "baz",
+        "bin"
     ]
     print(finder(files, queries))
